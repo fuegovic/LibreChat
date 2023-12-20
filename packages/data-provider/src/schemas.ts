@@ -139,6 +139,7 @@ export const supportsFiles = {
   [EModelEndpoint.google]: true,
   [EModelEndpoint.assistant]: true,
   [EModelEndpoint.azureOpenAI]: true,
+  [EModelEndpoint.bingAI]: true,
 };
 
 export const supportsBalanceCheck = {
@@ -147,7 +148,7 @@ export const supportsBalanceCheck = {
   [EModelEndpoint.gptPlugins]: true,
 };
 
-export const visionModels = ['gpt-4-vision', 'llava-13b', 'gemini-pro-vision'];
+export const visionModels = ['gpt-4-vision', 'llava-13b', 'gemini-pro-vision', 'bing', 'sydney'];
 
 export const eModelEndpointSchema = z.nativeEnum(EModelEndpoint);
 

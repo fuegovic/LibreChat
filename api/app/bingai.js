@@ -1,7 +1,6 @@
 require('dotenv').config();
 const { KeyvFile } = require('keyv-file');
-const { getUserKey, checkUserKeyExpiry } = require('~/server/services/UserService');
-const { logger } = require('~/config');
+const { getUserKey, checkUserKeyExpiry } = require('../server/services/UserService');
 
 const askBing = async ({
   text,
@@ -59,6 +58,8 @@ const askBing = async ({
       context,
       systemMessage,
       parentMessageId,
+      imageURL: text?.imageURL,
+      imageBase64: text?.imageBase64,
       toneStyle,
       onProgress,
       clientOptions: {
@@ -78,6 +79,8 @@ const askBing = async ({
       context,
       systemMessage,
       parentMessageId,
+      imageURL: text?.imageURL,
+      imageBase64: text?.imageBase64,
       toneStyle,
       onProgress,
       clientOptions: {
@@ -101,7 +104,7 @@ const askBing = async ({
     }
   }
 
-  logger.debug('bing options', options);
+  console.log('bing options', options);
 
   const res = await bingAIClient.sendMessage(text, options);
 
