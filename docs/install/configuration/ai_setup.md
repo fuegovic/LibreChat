@@ -1,28 +1,38 @@
-# Table of Contents
+---
+title: 🤖 AI Setup
+description: This doc explains how to setup your AI providers, their APIs and credentials.
+weight: -8
+---
 
-1. [AI Setup](#ai-setup)
-    - [General Information](#general)
-        - [Free AI APIs](#free-ai-apis)
-        - [Setting a Default Endpoint](#setting-a-default-endpoint)
-        - [Setting a Default Preset](#setting-a-default-preset)
-    - [OpenAI](#openai)
-    - [Anthropic](#anthropic)
-    - [Google](#google)
-        - [Generative Language API (Gemini)](#generative-language-api-gemini)
-        - [Vertex AI (PaLM 2 & Codey)](#vertex-ai-palm-2--codey)
-    - [Azure OpenAI](#azure-openai)
-        - [Required Variables](#required-variables)
-        - [Model Deployments](#model-deployments)
-        - [Setting a Default Model for Azure](#setting-a-default-model-for-azure)
-        - [Enabling Auto-Generated Titles with Azure](#enabling-auto-generated-titles-with-azure)
-        - [Using GPT-4 Vision with Azure](#using-gpt-4-vision-with-azure)
-        - [Setting Azure OpenAI as the Default Endpoint](#setting-azure-openai-as-the-default-endpoint)
-        - [Optional Variables](#optional-variables)
-        - [Using Plugins with Azure](#using-plugins-with-azure)
-    - [Unofficial APIs](#unofficial-apis)
-        - [ChatGPTBrowser](#chatgptbrowser)
-        - [BingAI](#bingai)
-2. [Conclusion](#conclusion)
+<!-- # Table of Contents
+
+- [Table of Contents](#table-of-contents)
+- [AI Setup](#ai-setup)
+  - [General](#general)
+    - [Free AI APIs](#free-ai-apis)
+    - [Setting a Default Endpoint](#setting-a-default-endpoint)
+    - [Setting a Default Preset](#setting-a-default-preset)
+  - [OpenAI](#openai)
+  - [Anthropic](#anthropic)
+  - [Google](#google)
+    - [Generative Language API (Gemini)](#generative-language-api-gemini)
+    - [Vertex AI (PaLM 2 \& Codey)](#vertex-ai-palm-2--codey)
+    - [1. Once signed up, Enable the Vertex AI API on Google Cloud:](#1-once-signed-up-enable-the-vertex-ai-api-on-google-cloud)
+    - [2. Create a Service Account with Vertex AI role:](#2-create-a-service-account-with-vertex-ai-role)
+    - [3. Create a JSON key to Save in your Project Directory:](#3-create-a-json-key-to-save-in-your-project-directory)
+  - [Azure OpenAI](#azure-openai)
+    - [Required Variables](#required-variables)
+    - [Model Deployments](#model-deployments)
+    - [Setting a Default Model for Azure](#setting-a-default-model-for-azure)
+    - [Enabling Auto-Generated Titles with Azure](#enabling-auto-generated-titles-with-azure)
+    - [Using GPT-4 Vision with Azure](#using-gpt-4-vision-with-azure)
+    - [Optional Variables](#optional-variables)
+    - [Using Plugins with Azure](#using-plugins-with-azure)
+  - [OpenRouter](#openrouter)
+  - [Unofficial APIs](#unofficial-apis)
+    - [ChatGPTBrowser](#chatgptbrowser)
+    - [BingAI](#bingai)
+  - [Conclusion](#conclusion) -->
 
 ---
 
@@ -34,7 +44,7 @@ This doc explains how to setup your AI providers, their APIs and credentials.
 
 For example, OpenAI, Google, Plugins, Azure OpenAI, Anthropic, are all different "endpoints". Since OpenAI was the first supported endpoint, it's listed first by default.
 
-Using the default environment values from `.env.example` will enable several endpoints, with credentials to be provided on a per-user basis from the web app. Alternatively, you can provide credentials for all users of your instance.
+Using the default environment values from [/.env.example](https://github.com/danny-avila/LibreChat/blob/main/.env.example) will enable several endpoints, with credentials to be provided on a per-user basis from the web app. Alternatively, you can provide credentials for all users of your instance.
 
 This guide will walk you through setting up each Endpoint as needed.
 
@@ -61,14 +71,13 @@ Note that LibreChat will use your last selected endpoint when creating a new con
 To override this behavior, you need a preset and you need to set that specific preset as the default one to use on every new chat.
 
 ### Setting a Default Preset
+See the **[Presets Guide](../../features/presets.md)** for more details
 
 A preset refers to a specific Endpoint/Model/Conversation Settings that you can save.
 
 The default preset will always be used when creating a new conversation.
 
-Here's a video to demonstrate: 
-
-https://github.com/danny-avila/LibreChat/assets/110412045/bbde830f-18d9-4884-88e5-1bd8f7ac585d
+Here's a video to demonstrate: **[Setting a Default Preset](https://github.com/danny-avila/LibreChat/assets/110412045/bbde830f-18d9-4884-88e5-1bd8f7ac585d)**
 
 --- 
 
@@ -76,7 +85,7 @@ https://github.com/danny-avila/LibreChat/assets/110412045/bbde830f-18d9-4884-88e
 
 To get your OpenAI API key, you need to:
 
-- Go to [https://platform.openai.com/account/api-keys](https://platform.openai.com/account/api-keys)
+- Go to **[https://platform.openai.com/account/api-keys](https://platform.openai.com/account/api-keys)**
 - Create an account or log in with your existing one
 - Add a payment method to your account (this is not free, sorry 😬)
 - Copy your secret key (sk-...) and save it in ./.env as OPENAI_API_KEY
@@ -89,8 +98,8 @@ Notes:
 
 ## Anthropic
 
-- Create an account at [https://console.anthropic.com/](https://console.anthropic.com/)
-- Go to [https://console.anthropic.com/account/keys](https://console.anthropic.com/account/keys) and get your api key
+- Create an account at **[https://console.anthropic.com/](https://console.anthropic.com/)**
+- Go to **[https://console.anthropic.com/account/keys](https://console.anthropic.com/account/keys)** and get your api key
 - add it to `ANTHROPIC_API_KEY=` in the `.env` file
 
 ---
@@ -114,7 +123,7 @@ Instructions for both are given below.
 
 To use Gemini models, you'll need an API key. If you don't already have one, create a key in Google AI Studio.
 
-<p><a class="button button-primary" href="https://makersuite.google.com/app/apikey" target="_blank" rel="noopener noreferrer">Get an API key here</a></p>
+Get an API key here: **[makersuite.google.com](https://makersuite.google.com/app/apikey)**
 
 Once you have your key, provide the key in your .env file, which allows all users of your instance to use it.
 
@@ -138,13 +147,13 @@ Setting `GOOGLE_KEY=user_provided` in your .env file will configure both the Ver
 
 ### Vertex AI (PaLM 2 & Codey)
 
-To setup Google LLMs (via Google Cloud Vertex AI), first, signup for Google Cloud: https://cloud.google.com/
+To setup Google LLMs (via Google Cloud Vertex AI), first, signup for Google Cloud: **[cloud.google.com](https://cloud.google.com/)**
 
 You can usually get **$300 starting credit**, which makes this option free for 90 days.
 
 ### 1. Once signed up, Enable the Vertex AI API on Google Cloud:
-  - Go to [Vertex AI page on Google Cloud console](https://console.cloud.google.com/vertex-ai)
-  - Click on "Enable API" if prompted
+  - Go to **[Vertex AI page on Google Cloud console](https://console.cloud.google.com/vertex-ai)**
+  - Click on `Enable API` if prompted
 ### 2. Create a Service Account with Vertex AI role:
   - **[Click here to create a Service Account](https://console.cloud.google.com/projectselector/iam-admin/serviceaccounts/create?walkthrough_id=iam--create-service-account#step_index=1)**
   - **Select or create a project**
@@ -205,11 +214,11 @@ You should also consider changing the `AZURE_OPENAI_MODELS` variable to the mode
 AZURE_OPENAI_MODELS=gpt-4-1106-preview,gpt-4,gpt-3.5-turbo,gpt-3.5-turbo-1106,gpt-4-vision-preview
 ```
 
-Overriding the construction of the API URL will be possible but is not yet implemented. Follow progress on this feature here: [Issue #1266](https://github.com/danny-avila/LibreChat/issues/1266)
+Overriding the construction of the API URL will be possible but is not yet implemented. Follow progress on this feature here: **[Issue #1266](https://github.com/danny-avila/LibreChat/issues/1266)**
 
 ### Model Deployments
 
-*Note: a change will be developed to improve current configuration settings, to allow multiple deployments/model configurations setup with ease: [#1390](https://github.com/danny-avila/LibreChat/issues/1390)*
+> Note: a change will be developed to improve current configuration settings, to allow multiple deployments/model configurations setup with ease: **[#1390](https://github.com/danny-avila/LibreChat/issues/1390)**
 
 As of 2023-12-18, the Azure API allows only one model per deployment.
 
@@ -288,7 +297,7 @@ As of December 18th, 2023, Vision models seem to have degraded performance with 
 ![image](https://github.com/danny-avila/LibreChat/assets/110412045/7306185f-c32c-4483-9167-af514cc1c2dd)
 
 
-*Note: a change will be developed to improve current configuration settings, to allow multiple deployments/model configurations setup with ease: [#1390](https://github.com/danny-avila/LibreChat/issues/1390)*
+> Note: a change will be developed to improve current configuration settings, to allow multiple deployments/model configurations setup with ease: **[#1390](https://github.com/danny-avila/LibreChat/issues/1390)**
 
 ### Optional Variables
 
@@ -301,12 +310,41 @@ These two variables are optional but may be used in future updates of this proje
 
 ### Using Plugins with Azure
 
-Note: To use the Plugins endpoint with Azure OpenAI, you need a deployment supporting [function calling](https://techcommunity.microsoft.com/t5/azure-ai-services-blog/function-calling-is-now-available-in-azure-openai-service/ba-p/3879241). Otherwise, you need to set "Functions" off in the Agent settings. When you are not using "functions" mode, it's recommend to have "skip completion" off as well, which is a review step of what the agent generated.
+Note: To use the Plugins endpoint with Azure OpenAI, you need a deployment supporting **[function calling](https://techcommunity.microsoft.com/t5/azure-ai-services-blog/function-calling-is-now-available-in-azure-openai-service/ba-p/3879241)**. Otherwise, you need to set "Functions" off in the Agent settings. When you are not using "functions" mode, it's recommend to have "skip completion" off as well, which is a review step of what the agent generated.
 
 To use Azure with the Plugins endpoint, make sure the following environment variables are set:
 
 * `PLUGINS_USE_AZURE`: If set to "true" or any truthy value, this will enable the program to use Azure with the Plugins endpoint.
 * `AZURE_API_KEY`: Your Azure API key must be set with an environment variable.
+
+---
+
+## [OpenRouter](https://openrouter.ai/)
+
+**[OpenRouter](https://openrouter.ai/)** is a legitimate proxy service to a multitude of LLMs, both closed and open source, including:
+- OpenAI models (great if you are barred from their API for whatever reason)
+- Anthropic Claude models (same as above)
+- Meta's Llama models
+- pygmalionai/mythalion-13b
+- and many more open source models. Newer integrations are usually discounted, too!
+
+> See their available models and pricing here: **[Supported Models](https://openrouter.ai/docs#models)**
+
+OpenRouter is so great, I decided to integrate it to the project as a standalone feature.
+
+**Setup:**
+- Signup to **[OpenRouter](https://openrouter.ai/)** and create a key. You should name it and set a limit as well.
+- Set the environment variable `OPENROUTER_API_KEY` in your .env file to the key you just created.
+- Set something in the `OPENAI_API_KEY`, it can be anyting, but **do not** leave it blank or set to `user_provided`  
+- Restart your LibreChat server and use the OpenAI or Plugins endpoints.
+
+**Notes:** 
+- [TODO] **In the future, you will be able to set up OpenRouter from the frontend as well.**
+- This will override the official OpenAI API or your reverse proxy settings for both Plugins and OpenAI.
+- On initial setup, you may need to refresh your page twice to see all their supported models populate automatically.
+- Plugins: Functions Agent works with OpenRouter when using OpenAI models.
+- Plugins: Turn functions off to try plugins with non-OpenAI models (ChatGPT plugins will not work and others may not work as expected).
+- Plugins: Make sure `PLUGINS_USE_AZURE` is not set in your .env file when wanting to use OpenRouter and you have Azure configured.
 
 ---
 
@@ -322,33 +360,34 @@ This is not to be confused with [OpenAI's Official API](#openai)!
 
 > Note that this is disabled by default and requires additional configuration to work. 
 > Also, using this may have your data exposed to 3rd parties if using a proxy, and OpenAI may flag your account.
-> See: [ChatGPT Reverse Proxy](../features/pandoranext.md)
+> See: [ChatGPT Reverse Proxy](../../features/pandoranext.md)
 
 To get your Access token for ChatGPT Browser Access, you need to:
 
-- Go to [https://chat.openai.com](https://chat.openai.com)
+- Go to **[https://chat.openai.com](https://chat.openai.com)**
 - Create an account or log in with your existing one
-- Visit [https://chat.openai.com/api/auth/session](https://chat.openai.com/api/auth/session)
+- Visit **[https://chat.openai.com/api/auth/session](https://chat.openai.com/api/auth/session)**
 - Copy the value of the "accessToken" field and save it in ./.env as CHATGPT_ACCESS_TOKEN
 
-Warning: There may be a chance of your account being banned if you deploy the app to multiple users with this method. Use at your own risk. 😱
+Warning: There may be a chance of your account being banned if you deploy the app to multiple users with this method. Use at your own risk.
 
 ---
 
 ### BingAI
+I recommend using Microsoft Edge for this:
 
-To get your Bing Access Token, you have a few options:
+- Navigate to **[Bing Chat](https://www.bing.com/chat)**
+- **Login** if you haven't already
+- Initiate a conversation with Bing
+- Open `Dev Tools`, usually with `F12` or `Ctrl + Shift + C`
+- Navigate to the `Network` tab
+- Look for `lsp.asx` (if it's not there look into the other entries for one with a **very long** cookie) 
+- Copy the whole cookie value. (Yes it's very long 😉)
+- Use this **"full cookie string"** for your "BingAI Token"
 
-- You can try leaving it blank and see if it works (fingers crossed 🤞)
-
-- You can follow these [new instructions](https://github.com/danny-avila/LibreChat/issues/370#issuecomment-1560382302) (thanks @danny-avila for sharing 🙌)
-
-- You can use MS Edge, navigate to bing.com, and do the following:
-  - Make sure you are logged in
-  - Open the DevTools by pressing F12 on your keyboard
-  - Click on the tab "Application" (On the left of the DevTools)
-  - Expand the "Cookies" (Under "Storage")
-  - Copy the value of the "\_U" cookie and save it in ./.env as BING_ACCESS_TOKEN
+<p align="left">
+    <img src="https://github.com/danny-avila/LibreChat/assets/32828263/d4dfd370-eddc-4694-ab16-076f913ff430" width="50%">
+</p>
 
 ---
 
